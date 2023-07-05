@@ -57,22 +57,7 @@ void showPDDebug(void) {
           // print out this entry of the proposal
           OLED::printNumber(screen, 2, FontStyle::SMALL, true); // print the entry number
           OLED::print(SmallSymbolSpace, FontStyle::SMALL);
-          if (min_voltage > 0) {
-            OLED::printNumber(min_voltage / 1000, 2, FontStyle::SMALL, true); // print the voltage
-            OLED::print(SmallSymbolMinus, FontStyle::SMALL);
-          }
-          OLED::printNumber(voltage_mv / 1000, 2, FontStyle::SMALL, true); // print the voltage
-          OLED::print(SmallSymbolVolts, FontStyle::SMALL);
-          OLED::print(SmallSymbolSpace, FontStyle::SMALL);
-          if (wattage) {
-            OLED::printNumber(wattage, 3, FontStyle::SMALL, true); // print the current in 0.1A res
-            OLED::print(SmallSymbolWatts, FontStyle::SMALL);
-          } else {
-            OLED::printNumber(current_a_x100 / 100, 2, FontStyle::SMALL, true); // print the current in 0.1A res
-            OLED::print(SmallSymbolDot, FontStyle::SMALL);
-            OLED::printNumber(current_a_x100 % 100, 2, FontStyle::SMALL, false); // print the current in 0.1A res
-            OLED::print(SmallSymbolAmps, FontStyle::SMALL);
-          }
+          OLED::drawHex(lastCaps[screen - 1], FontStyle::SMALL, 8);
         }
       } else {
         screen = 0;
